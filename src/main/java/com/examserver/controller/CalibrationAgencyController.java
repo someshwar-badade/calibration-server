@@ -1,6 +1,8 @@
 package com.examserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.examserver.model.CalibrationAgency;
+import com.examserver.model.CommonPage;
+import com.examserver.model.InstrumentMaster;
+import com.examserver.model.SearchCriteria;
 import com.examserver.service.CalibrationAgencyService;
 import com.examserver.util.ApplicationResponse;
 
@@ -29,6 +34,12 @@ public class CalibrationAgencyController {
 		return calibrationAgencyService.getAgencies();
 	}
 	
+	@GetMapping("/filtered")
+	public ResponseEntity<Page<CalibrationAgency>> getListFiltered(CommonPage commonPage,
+			SearchCriteria searchCriteria) {
+//		return calibrationAgencyService.getAgencies();
+		return new ResponseEntity<>(calibrationAgencyService.getAllFilteredRecords(commonPage, searchCriteria),HttpStatus.OK);
+	}
 	//get Department
 			@GetMapping("/{id}")
 			public ResponseEntity<?> getCalibrationAgency(@PathVariable("id") Long id){
