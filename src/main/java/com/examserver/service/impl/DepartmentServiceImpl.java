@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.examserver.model.Company;
 import com.examserver.model.Department;
 import com.examserver.repository.DepartmentRepository;
 import com.examserver.service.DepartmentService;
@@ -47,6 +48,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public void deleteDepartment(Long id) {
 		this.departmentRepository.deleteById(id);
 		
+	}
+	
+	@Override
+	public Set<Department>findByCompany(Company company) {
+		// TODO Auto-generated method stub
+		return this.departmentRepository.findByCompany(company);
 	}
 	
 }

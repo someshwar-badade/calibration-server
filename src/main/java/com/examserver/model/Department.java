@@ -23,8 +23,10 @@ public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
+	
+	private String description;
 	
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL )
 	@JsonIgnore
@@ -40,10 +42,11 @@ public class Department {
 	}
 
 
-	public Department(Long id, String name, Set<InstrumentMaster> instrumentMasters) {
+	public Department(Long id, String name, String description, Set<InstrumentMaster> instrumentMasters) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.description = description;
 		this.instrumentMasters = instrumentMasters;
 	}
 
@@ -67,7 +70,14 @@ public class Department {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
 
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Set<InstrumentMaster> getInstrumentMasters() {
 		return instrumentMasters;
 	}
