@@ -51,6 +51,11 @@ public class DepartmentController {
 		public Department addDepartment(@RequestBody Department d) {
 			return this.departmentService.addDepartment(d);
 		}
+//		@PostMapping()
+//		public ResponseEntity<Department> saveDepartment(@RequestBody Department department) {
+//
+//			return new ResponseEntity<Department>(departmentService.saveDepartment(department), HttpStatus.CREATED);
+//		}
 		
 		//Update Department
 		@PutMapping

@@ -32,8 +32,7 @@ public class Department {
 	@JsonIgnore
 	private Set<InstrumentMaster> instrumentMasters = new LinkedHashSet<>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Company company;
 	
 	
@@ -42,12 +41,13 @@ public class Department {
 	}
 
 
-	public Department(Long id, String name, String description, Set<InstrumentMaster> instrumentMasters) {
+	public Department(Long id, String name, String description, Company company, Set<InstrumentMaster> instrumentMasters) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.instrumentMasters = instrumentMasters;
+		this.company = company;
 	}
 
 
